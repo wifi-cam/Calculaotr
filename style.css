@@ -22,10 +22,21 @@ body {
 }
 
 .screen {
+    flex-wrap: wrap;
     background-color: rgb(228, 228, 228);
     height: 200px;
     width: 380px;
     margin:20px 10px;
+}
+
+.last-input{
+    width: auto;
+    height: 30%;
+}
+
+.current-input{
+    width: auto;
+    height: 70%;
 }
 
 .btn-grid {
@@ -80,6 +91,7 @@ body {
 .btn-main > .btn {
     height: 24%;
     width: 24%;
+    margin-left: .82px;
 }
 
 .btn-main > .btn:hover {
