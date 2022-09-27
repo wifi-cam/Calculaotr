@@ -25,8 +25,7 @@ document.addEventListener('DOMContentLoaded', function(){
     }))
 
     decimalBtn.addEventListener('click', function(e){
-        handleDecimal(e.target.textContent)
-        currentScrn.textContent = currentInput;
+        addDecimal()
     })
 
     clearBtn.addEventListener('click', function(e){
@@ -38,9 +37,15 @@ document.addEventListener('DOMContentLoaded', function(){
     })
 
     equalBtn.addEventListener('click', function(){
-        calculate()
-        lastScrn.textContent = '';
-        currentScrn.textContent = lastInput;
+        if(currentInput != '' && lastInput != ''){
+            calculate()
+            lastScrn.textContent = '';
+            if(lastScrn.length <= 8) {
+                currentScrn.textContent = lastInput;
+            } else{
+                currentScrn.textContent = lastInput.slice(0,8) + "...";
+            }
+        }
     })
 
 })
@@ -54,6 +59,12 @@ function handleOperator(op){
     operator = op;
     lastInput = currentInput;
     currentInput = '';
+}
+
+function addDecimal(){
+    if(!currentInput.includes('.')){
+        currentInput += '.';
+    }
 }
 
 function calculate(){
