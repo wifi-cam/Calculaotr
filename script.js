@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function(){
     const decimalBtn = document.getElementById('decimalBtn');
     const equalBtn = document.getElementById('equalBtn');
     const clearBtn = document.getElementById('clear');
-    const deleteBtn = document.getElementById('delete');
+    // const deleteBtn = document.getElementById('delete');
 
     let currentScrn = document.querySelector('.current-input');
     let lastScrn = document.querySelector('.last-input');
@@ -24,12 +24,23 @@ document.addEventListener('DOMContentLoaded', function(){
         currentScrn.textContent = currentInput;
     }))
 
+    decimalBtn.addEventListener('click', function(e){
+        handleDecimal(e.target.textContent)
+        currentScrn.textContent = currentInput;
+    })
+
     clearBtn.addEventListener('click', function(e){
         lastInput = '';
         currentInput = '';
         operator = '';
         currentScrn.textContent = currentInput;
         lastScrn.textContent = lastInput;
+    })
+
+    equalBtn.addEventListener('click', function(){
+        calculate()
+        lastScrn.textContent = '';
+        currentScrn.textContent = lastInput;
     })
 
 })
@@ -43,4 +54,27 @@ function handleOperator(op){
     operator = op;
     lastInput = currentInput;
     currentInput = '';
+}
+
+function calculate(){
+    lastInput = Number(lastInput);
+    currentInput = Number(currentInput);
+
+    if(operator === '+'){
+        lastInput += currentInput;
+    } else if(operator === '-'){
+        lastInput -= currentInput;
+    } else if(operator === 'x'){
+        lastInput *= currentInput;
+    } else {
+        lastInput /= currentInput;
+    }
+
+    lastInput = roundNumber(lastInput);
+    lastInput = String(lastInput);
+    currentInput = String(lastInput);
+}
+
+function roundNumber(num){
+    return Math.round(num * 1000) / 1000;
 }
