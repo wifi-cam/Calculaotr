@@ -4,7 +4,7 @@ let lastInput = '';
 
 document.addEventListener('DOMContentLoaded', function(){
     let numbrBtns = document.querySelectorAll('.numBtn');
-    const oprtrBtns = document.querySelectorAll('[data-operator]');
+    const oprtrBtns = document.querySelectorAll('.op');
     const decimalBtn = document.getElementById('decimalBtn');
     const equalBtn = document.getElementById('equalBtn');
     const clearBtn = document.getElementById('clear');
@@ -16,9 +16,23 @@ document.addEventListener('DOMContentLoaded', function(){
     numbrBtns.forEach((number) => number.addEventListener('click', function(e){
         handleNumber(e.target.textContent)
         currentScrn.textContent = currentInput;
-    }) )
+    }))
+
+    oprtrBtns.forEach((op) => op.addEventListener('click', function(e){
+        handleOperator(e.target.textContent)
+        lastScrn.textContent = lastInput + ' ' + operator;
+        currentScrn.textContent = currentInput;
+    }))
+
 })
 
 function handleNumber(num){
+    if(currentInput.length <= 7)
     currentInput += num;
+}
+
+function handleOperator(op){
+    operator = op;
+    lastInput = currentInput;
+    currentInput = '';
 }

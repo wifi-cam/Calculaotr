@@ -32,6 +32,7 @@ body {
 .last-input{
     width: auto;
     height: 30%;
+    color: rgb(22, 22, 22);
 }
 
 .current-input{
@@ -90,13 +91,15 @@ body {
     width: 380px;
 }
 
-.btn-main > .btn, .numBtn{
+.btn-main > .btn, .numBtn, .op{
     height: 24%;
     width: 24%;
     margin-left: .82px;
 }
 
 
-.btn-main > .btn:hover,  .btn-main > .numBtn:hover{
+.btn-main > .btn:hover,  
+.btn-main > .numBtn:hover, 
+.btn-main > .op:hover {
     background-color: rgb(173, 168, 168);
 }
