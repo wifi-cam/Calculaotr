@@ -24,6 +24,14 @@ document.addEventListener('DOMContentLoaded', function(){
         currentScrn.textContent = currentInput;
     }))
 
+    clearBtn.addEventListener('click', function(e){
+        lastInput = '';
+        currentInput = '';
+        operator = '';
+        currentScrn.textContent = currentInput;
+        lastScrn.textContent = lastInput;
+    })
+
 })
 
 function handleNumber(num){
