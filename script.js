@@ -40,11 +40,11 @@ document.addEventListener('DOMContentLoaded', function(){
         if(currentInput != '' && lastInput != ''){
             calculate()
             lastScrn.textContent = '';
-            if(lastScrn.length <= 8) {
-                currentScrn.textContent = lastInput;
-            } else{
-                currentScrn.textContent = lastInput.slice(0,8) + "...";
-            }
+            // if(lastScrn.length <= 6) {
+            currentScrn.textContent = lastInput;
+            // } else{
+            //     currentScrn.textContent = lastInput.slice(0,8) + "...";
+            // }
         }
     })
 
